@@ -1,0 +1,58 @@
+section {
+	display: block;
+	border: 1px solid #000;
+}
+
+/*chatbox*/
+#chatBox {
+	width: 550px;
+	background-color: #CADDFF;
+	margin: 50px;	
+}
+
+/*sign in area */
+#signInArea {
+	display: block;
+	width: 100%;
+	text-align: right;
+}
+#signInArea span.welcome{
+	display: inline-block;
+	line-height: 30px;
+	padding-right:10px;
+}
+
+/*chat messsage area*/
+#chatArea {
+	display: block;
+	height: 300px;
+	background: #fff;
+	overflow-y: scroll;	
+}
+
+/*message typing area*/
+#signInButton {
+	display: block;
+	height: 50px;
+	width: 500px;
+	margin: 15px auto;
+}
+#messaegeTypingArea {
+	height: 85px;
+}
+#messaegeTypingArea textarea {
+	height: 70px;
+	width: 450px;
+}
+.newMessage .left{
+	float: left;
+}
+.newMessage .right{
+	float: right;
+}
+#newMessageSend{
+	float: right;
+	display: block;
+	height: 80px;
+	width: 80px;
+}

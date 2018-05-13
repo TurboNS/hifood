@@ -1,0 +1,222 @@
+ <!--https://www.youtube.com/watch?v=keO6egndYrE-->
+      <!--map tutorial by Dave Wallace on YouTube-->
+      <!-- http://www.w3schools.com/jsref/met_loc_reload.asp -->
+      <!-- https://developers.google.com/maps/documentation/javascript/tutorial -->
+      <!-- https://developers.google.com/maps/documentation/javascript/tutorial#libraries -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Find your way</title>
+    
+    <meta  name="viewport"content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <style>
+        
+        #map-canvas{
+            height:100%;
+            width: 100%;
+        }
+        
+        html,body{
+            height:500px;
+            margin:50;
+            padding:0;
+        }
+        
+         #floating-panel {
+        position: absolute;
+        top: 10px;
+        right: 10%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      
+      
+    </style>
+    
+    </head>
+<body>
+
+
+
+<script>
+var map;
+var service;
+  function initialise(location){
+      
+      
+      
+      function handleSearchResults(results, status){
+   
+   console.log(results);
+   
+   
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+        
+        var marker = new google.maps.Marker({
+         position:results[i].geometry.location,
+          map: map,
+         title: "Milano - "+results[i].vicinity,
+        
+          
+        });
+     
+    }
+    }
+}
+function performSearch(){
+    
+    
+      var request = {
+          
+    bounds:map.getBounds(),
+    name: "Milano - Dublin"
+  };
+      service.nearbySearch(request, handleSearchResults);
+}
+      
+      
+      
+     // console.log(location);
+      
+      var current= new google.maps.LatLng(location.coords.latitude,location.coords.longitude);
+      
+        var mapOptions =
+          {
+                      zoom: 12,
+                      center:current,
+                      mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            
+            // Create the map, and place it in the map_canvas div
+            map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            
+            var marker = new google.maps.Marker({
+                      position: current,
+                      map: map,
+                      title: "Your current location!"
+            });
+            
+            
+             service = new google.maps.places.PlacesService(map);
+            
+            //this ensures we wait until the map bounds are initialies before we perform the search
+            google.maps.event.addListenerOnce(map,'bounds_changed',performSearch);
+            
+          //redo the search when we click on the refresh button
+          $('#refresh').click(performSearch);
+          
+           var cityCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#0000FF',
+      fillOpacity: 0.35,
+      map: map,
+      center: current,
+      radius: 60
+    });
+    
+    
+    //trafic 
+var trafficLayer = new google.maps.TrafficLayer();
+     
+     
+    function trac(){
+        
+         if(trafficLayer.getMap()){
+         
+         trafficLayer.setMap(null);
+     }
+     
+     else{
+         
+          trafficLayer.setMap(map);
+     }
+  
+    
+        
+    }
+    
+    $('#toggle_trafic').click(trac);
+    
+    
+   // Direction
+   
+   var haight = new google.maps.LatLng(53.270668, -9.056791);
+    
+    var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+     directionsDisplay.setMap(map);
+  
+  var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+        document.getElementById("floating-panel").addEventListener('change', onChangeHandler);
+        document.getElementById('floating-panel').addEventListener('change', onChangeHandler);
+      
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+           var end = document.getElementById('end').value;
+        directionsService.route({
+          origin: current,
+          destination: end,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+  
+      }
+ 
+  } // end of the main function
+  $(document).ready(function(){
+      
+      navigator.geolocation.getCurrentPosition(initialise);
+  });
+    
+    
+</script>
+
+
+<div id="map-canvas"></div>
+
+<button id="refresh">Refresh</button>
+<button id="toggle_trafic">Trafic</button>
+<button id="toggle_weather">Weather</button>
+
+ <div id="floating-panel">
+    <b>Start: </b>
+    <select id="start">
+      <option value="Dublin, il">Dublin</option>
+      
+    </select>
+    <b>End: </b>
+    <select id="end">
+    
+      <option value="38 Dawson Street, Dublin 2">Milano Dawson Street</option>
+      <option value="19 Essex Street East, Dublin 2">Milano Essex Street</option>
+      <option value="UNIT 1, HANOVER QUAY">Milano - Grand Canal</option>
+      <option value="62 Ranelagh, Dublin 6">62 Ranelagh, Dublin 6</option>
+      <option value="Blanchardstown Centre, Blanchardstown, Dublin">Milano Blanchardstown</option>
+      <option value="1-2 Haddington Rd, Dublin 4">Milano - Haddington Road</option>
+      <option value="Unit 4, Western End, Liffey Valley Shopping Centre, Dublin 22">Milano Liffey Valley</option>
+      <option value="6 Excise Walk, North Wall Clarion Quay, Dublin">Milano Clarion Quay</option>
+      
+    </div>
+
+</body>
+</html>
