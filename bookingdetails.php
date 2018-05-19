@@ -46,6 +46,7 @@
       <li><a href="addcategory.php">Add Category</a></li>
       <li><a href="addmenu.php">Add Menu</a></li> 
       <li class="active"><a href="bookingdetails.php">Booking List</a></li>
+      <li><a href="foodorder.php">Food Order</a></li> 
       <li><a href="logout.php">Logout</a></li>
     </ul>
   </div>

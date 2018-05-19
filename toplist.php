@@ -39,7 +39,6 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="toplist.php">Toplist</a></li>
       <li><a href="prepare.php">Prepare Me</a></li>
-      <li><a href="order.php">Order</a></li>
       <li><a href="direction.php">Direction</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <li><a href="addmenu.php">Admin</a></li>
@@ -75,6 +74,7 @@
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Restaurant one</a>
+          <a href="order.php" class="btn btn-success" role="button">VIEW</a>
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse in">

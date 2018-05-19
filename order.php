@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>HiFood Order</title>
+<title>Restaurant One Order</title>
 
 
   <meta charset="utf-8">
@@ -30,8 +30,8 @@
     <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="toplist.php">Toplist</a></li>
+      <li class="active"><a href="order.php">Order</a></li>
       <li><a href="prepare.php">Prepare Me</a></li>
-      <li class="active"><a href="order1.php">Order</a></li>
       <li><a href="direction.php">Direction</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <li><a href="addmenu.php">Admin</a></li>

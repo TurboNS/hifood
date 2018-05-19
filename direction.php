@@ -108,7 +108,6 @@
           <ul class="nav navbar-nav">
             <li><a href="toplist.php">Top List</a></li>
             <li><a href="prepare.php">Prepare Me</a></li>
-            <li><a href="order.php">Order</a></li>
             <li class="active"><a href="direction.php">Direction</a></li>
             <li><a href="contact.php">Contact Us</a></li>
             <li><a href="addmenu.php">Admin</a></li>

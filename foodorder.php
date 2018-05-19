@@ -3,19 +3,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>HiFood Add Menu</title>
+<title>Food Order</title>
 
-
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+		<style>
+          table {
+          border-collapse: collapse;
+          width: 75%;
+          color: #588c7e;
+          font-family: monospace;
+          font-size: 15px;
+          text-align: left;
+          } 
+          th {
+          background-color: #588c7e;
+          color: white;
+          }
+          tr:nth-child(even) {background-color: #f2f2f2}
 
-</head>
 
-<body>
+	  </style>
+  </head>
 
+  <body>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -31,88 +46,58 @@
     <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="addcategory.php">Add Category</a></li>
-      <li class="active"><a href="addmenu.php">Add Menu</a></li> 
+      <li><a href="addmenu.php">Add Menu</a></li> 
       <li><a href="bookingdetails.php">Booking List</a></li>
-      <li><a href="foodorder.php">Food Order</a></li> 
+      <li class="active"><a href="foodorder.php">Food Order</a></li>
       <li><a href="logout.php">Logout</a></li>
     </ul>
   </div>
   </div>
 </nav>
+		
+		
 
 
+  <center>
 
-<?php include'connector.php';?>
-    
+          <h1>Food Order List</h1>
 
-<section id="header" class="header-one">
-<div class="container">
+  <body>
+        <table>
+         <tr>
+           <th>Customer</th> 
+           <th>Food Item</th> 
+           <th>Price</th>
+         </tr>
+
+  <?php
+
+  $conn = mysqli_connect("173.194.109.118", "turbo", "turbo", "database");
+  // Check connection
+  if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+  } 
+  $sql = "SELECT order_id, cust_id, item_name, price FROM order_menu";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+   echo "<tr> 
+         <td>" . $row["cust_id"]. "</td>
+         <td>" . $row["item_name"]. "</td>
+         <td>" . $row["price"]. "</td></tr>";
+   }
+   echo "</table>";
+   } else { echo "0 results"; }
+   $conn->close();
+   ?>
+   </table>
+
+   </center>
 
 
-<center>
-
-<form class="form-horizontal" method ='post'>
-<?php
-
-if(isset($_POST['register'])){
-  $menu_item = $_POST['menu_item'];
-  $sub_menu_item = $_POST['sub_menu_item'];
-  $price = $_POST['price'];
+  	   
 	
-	
-	if(empty($menu_item) or empty($price)){
-		$message = "please fill the informations";
-			}else{
-				$conn = mysqli_connect($host, $user, $pass, $db);
-				$query = "INSERT INTO sub_menu(sub_item_id,menu_item,sub_menu_item,price) VALUES ('','$menu_item','$sub_menu_item','$price')";
-			
-		mysqli_query($conn,$query); 
-		$message="Registered";
-	}
-  echo "<script>alert('Successfully');</script>";
-	}
-	
-?>
-
-
-        <div class="form-group">
-        <label for="menu_item" class="col-sm-4 control-label">Add Category</label>
-        <div class="col-sm-4">
-        <input type="text" class="form-control" name="menu_item" placeholder="Category">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label for="sub_menu_item" class="col-sm-4 control-label">Add Food/Beverage</label>
-        <div class="col-sm-4">
-        <input type="text" class="form-control" name="sub_menu_item" placeholder="Category">
-        </div>
-        </div>
-
-        <div class="form-group">
-        <label for="price" class="col-sm-4 control-label">Add Price</label>
-        <div class="col-sm-4">
-        <input type="text" class="form-control" name="price" placeholder="Price">
-        </div>
-        </div>
-        
-        <div class="form-group">
-        <div class="col-sm-offset-4 col-sm-8">
-        <button type="submit" name="register" value="Register" class="btn btn-danger">ADD</button> 
-        </div>
-        </div>
-
-</form>
-
-
-
-</center>
-
-</div>
-</div>
-</div>
-</section>
-
   <!--footer-->
   <footer>
      <div class="container"> 
@@ -135,3 +120,4 @@ if(isset($_POST['register'])){
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+
