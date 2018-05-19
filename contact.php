@@ -76,16 +76,18 @@
 
   	   
 	
-  <div class="container"> <!--footer-->
-    <hr>
+  <!--footer-->
   <footer>
-    <div class="row">
-      <div class="col-lg-12">
-        <p>Copyright 2017 &copy; Hifood ltd </p>
-      </div>
-    </div>
+     <div class="container"> 
+     <hr>
+ 
+     <div class="row">
+     <div class="col-lg-12">
+        <p>Copyright 2018 &copy; Hifood ltd </p>
+     </div>
+     </div>
   </footer>
-  </div><!--Footer-->
+  
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">HiFood</a>
+          <a class="navbar-brand" href="toplist.php">HiFood</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -76,16 +76,18 @@
 
   	   
 	
-	<div class="container"> <!--footer-->
-		<hr>
-	<footer>
-		<div class="row">
-			<div class="col-lg-12">
-				<p>Copyright 2017 &copy; Hifood ltd </p>
-			</div>
-		</div>
-	</footer>
-	</div><!--Footer-->
+  <!--footer-->
+  <footer>
+     <div class="container"> 
+     <hr>
+ 
+     <div class="row">
+     <div class="col-lg-12">
+        <p>Copyright 2018 &copy; Hifood ltd </p>
+     </div>
+     </div>
+  </footer>
+  
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
