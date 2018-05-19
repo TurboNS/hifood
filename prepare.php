@@ -26,12 +26,27 @@
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 	
 		<style>
-		body {
-              padding-top: 50px;}
-              .starter-template {
-              padding: 40px 15px;
-              text-align: center;}
-	    </style>
+		      body {
+          padding-top: 50px;}
+          .starter-template {
+          padding: 40px 15px;
+          text-align: center;}
+          table {
+          border-collapse: collapse;
+          width: 75%;
+          color: #588c7e;
+          font-family: monospace;
+          font-size: 15px;
+          text-align: left;
+          } 
+          th {
+          background-color: #588c7e;
+          color: white;
+          }
+          tr:nth-child(even) {background-color: #f2f2f2}
+
+
+	  </style>
   </head>
 
   <body>
@@ -69,10 +84,41 @@
         </div>
 		
 
-  	  <body>
 
-    
-</body>
+  <center>
+  <body>
+        <table>
+         <tr>
+           <th>Customer</th> 
+           <th>Food Item</th> 
+           <th>Price</th>
+         </tr>
+
+  <?php
+
+  $conn = mysqli_connect("173.194.109.118", "turbo", "turbo", "database");
+  // Check connection
+  if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+  } 
+  $sql = "SELECT order_id, cust_id, item_name, price FROM order_menu";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+   echo "<tr> 
+         <td>" . $row["cust_id"]. "</td>
+         <td>" . $row["item_name"]. "</td>
+         <td>" . $row["price"]. "</td></tr>";
+   }
+   echo "</table>";
+   } else { echo "0 results"; }
+   $conn->close();
+   ?>
+   </table>
+
+   </center>
+
 
   	   
 	

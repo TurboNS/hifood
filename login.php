@@ -72,6 +72,7 @@
 <p class="lead">Username: <input type="text" name="username" placeholder="Your username"></p>
 <p class="lead">Password: <input type="password" name="psword" placeholder="Your password"></p>
 <button type="submit" name="submit" value="Login" class="btn btn-success">LOGIN</button> 
+<a href="register.php" class="btn btn-danger" role="button">REGISTER</a>
 </form>
 </center>
 
