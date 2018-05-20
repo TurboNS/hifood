@@ -19,7 +19,7 @@
 <?php
   session_start();
   if(!isset($_SESSION["sess_user"])){
-          header("location:login.php");
+          header("location:index.php");
   } else {
   ?>
 
@@ -48,22 +48,12 @@
   </div>
 </nav>
 
-
-
-    <div class="container">
-    
-        <div class="starter-template">
-          <h1>Welcome "<?=$_SESSION['sess_user'];?>"</h1>
-          <p class="lead">Let the HiFood find your favorite foods</p>
-        </div>
-
-<div class="container">
+   <div class="container">
     <div class="row">
  
           <div class="header-thumb">
-        
-              <h1 class="wow fadeIn" data-wow-delay="1.6s">Top List</h1> 
-              <h3 class="wow fadeInUp" data-wow-delay="1.9s">Here are some recommened restaurant for you</h3>
+              <h1>Welcome "<?=$_SESSION['sess_user'];?>"</h1>
+              <h3 class="wow fadeInUp" data-wow-delay="1.9s">Here are top recommened restaurant for you</h3>
           </div>
      
 
@@ -75,6 +65,7 @@
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Restaurant one</a>
           <a href="order.php" class="btn btn-success" role="button">VIEW</a>
+          <a href="booking.php" class="btn btn-success" role="button">BOOK TABLE</a>
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse in">

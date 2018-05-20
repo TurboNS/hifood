@@ -51,7 +51,7 @@
               <h1 class="wow fadeIn" data-wow-delay="1.6s">Thank you</h1>
               <h3 class="wow fadeInUp" data-wow-delay="1.9s">for your visiting HiFood</h3>
   
-              <a href="login.php" class="btn btn-warning" role="button">Login again</a>
+              <a href="index.php" class="btn btn-warning" role="button">Login again</a>
 
           </div>
 			</div>

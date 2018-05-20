@@ -74,7 +74,7 @@ if(isset($_POST['register'])){
 		$message="Registered";
 	}
 	echo "<p>$message</p>";
-	header('location: login.php');
+	header('location: index.php');
 	
 	}
 	
@@ -85,7 +85,7 @@ if(isset($_POST['register'])){
 <p class="lead">Password: <input type='password' name='password' placeholder="Set up your password"></p>
 <button type="submit" name="register" value="Register" class="btn btn-danger">REGISTER</button> 
 <p class="lead">alreadyed a member?</p>
-<a href="login.php" class="btn btn-success" role="button">Login</a>
+<a href="index.php" class="btn btn-success" role="button">Login</a>
 
 </form>
 </center>

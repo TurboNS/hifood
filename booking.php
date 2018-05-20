@@ -28,9 +28,9 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="booking.php">Toplist</a></li>
+      <li><a href="toplist.php">Toplist</a></li>
+      <li class="active"><a href="booking.php">Booking</a></li>
       <li><a href="prepare.php">Prepare Me</a></li>
-      <li><a href="order.php">Order</a></li>
       <li><a href="direction.php">Direction</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <li><a href="addmenu.php">Admin</a></li>

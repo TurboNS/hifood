@@ -68,7 +68,7 @@
               <h3 class="wow fadeInUp" data-wow-delay="1.9s">Let HiFood help you find your favorite foods</h3>
 
 <center>
-<form action="login.php" method="POST">	
+<form action="index.php" method="POST">	
 <p class="lead">Username: <input type="text" name="username" placeholder="Your username"></p>
 <p class="lead">Password: <input type="password" name="psword" placeholder="Your password"></p>
 <button type="submit" name="submit" value="Login" class="btn btn-success">LOGIN</button> 
@@ -95,7 +95,7 @@ if(!empty($_POST['username']) && !empty($_POST['psword'])) {
 		echo $numrows;
         if($numrows!=0)
         {
-        while($row=mysql_fetch_assoc($query))
+        while($row=$query -> fetch_assoc())
         {
         $username=$row['username'];
         $password=$row['psword'];
