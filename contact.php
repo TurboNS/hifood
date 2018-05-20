@@ -65,14 +65,39 @@
         <div class="starter-template">
           <h1>Contact Us</h1>
           <p class="lead">Please leave any comment or enquries</p>
-        </div>
-		
 
-<body>
-   
-    
-</body>
+<center>   
 
+<div class="contact-form">
+<form id="contact-form" name ="sendemail" action = " " method ='post'><br>
+<input class="form-control" type="text" name="fullname" placeholder="Your full name"><br>
+<input class="form-control" type = "text" name = "email" placeholder="Your email address"><br>
+<input class="form-control" type="text" name="subject" placeholder="Subject"><br>
+<textarea class="form-control" type="text" name="message" placeholder="Your message" row="4"></textarea></p>
+<input class="btn btn-danger" type="submit" name="submit" value="SEND EMAIL"/>
+</form>
+
+</center>
+
+
+<?php
+if(isset($_POST['submit']))
+{
+  $name=$_POST['fullname'];
+  $email=$_POST['email'];
+  $subject=$_POST['subject'];
+  $message=$_POST['message'];
+  $adminemail="s.nuth@msn.com";
+
+  //echo $name.' '.$email.' '.$subject.' '.$message;
+  
+  $headers="Reply-to:$email";
+  mail($adminemail,$subject,$message,$headers);
+
+}
+?>
+</div>
+</div>   
   	   
 	
   <!--footer-->
