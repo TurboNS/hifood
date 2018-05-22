@@ -42,7 +42,7 @@
       <a class="navbar-brand" href="toplist.php">HiFood</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav navbar-right">
       <li><a href="addcategory.php">Add Category</a></li>
       <li><a href="addmenu.php">Add Menu</a></li> 
       <li class="active"><a href="bookingdetails.php">Booking List</a></li>

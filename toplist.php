@@ -41,7 +41,7 @@
       <li><a href="prepare.php">Prepare Me</a></li>
       <li><a href="direction.php">Direction</a></li>
       <li><a href="contact.php">Contact Us</a></li>
-      <li><a href="addmenu.php">Admin</a></li>
+      <li><a href="admin.php">Admin</a></li>
       <li><a href="logout.php">Logout</a></li>
     </ul>
   </div>

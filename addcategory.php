@@ -6,7 +6,7 @@
 <title>HiFood Add Category</title>
 
 
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,7 +29,7 @@
       <a class="navbar-brand" href="toplist.php">HiFood</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="addcategory.php">Add Category</a></li> 
       <li><a href="addmenu.php">Add Menu</a></li>
       <li><a href="bookingdetails.php">Booking List</a></li>
@@ -44,13 +44,9 @@
 <?php include'connector.php';?>
     
 
-
-
 <section id="header" class="header-one">
  
 <div class="container">
-
-
 
 <center>
 

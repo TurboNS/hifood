@@ -8,22 +8,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title>HiFood Order</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
-
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 	
 		<style>
 		      body {
@@ -31,23 +21,38 @@
           .starter-template {
           padding: 40px 15px;
           text-align: center;}
-          table {
-          border-collapse: collapse;
-          width: 75%;
-          color: #588c7e;
-          font-family: monospace;
-          font-size: 15px;
-          text-align: left;
-          } 
-          th {
-          background-color: #588c7e;
-          color: white;
-          }
-          tr:nth-child(even) {background-color: #f2f2f2}
-
-
 	  </style>
   </head>
+
+
+<script>
+$(document).ready(function(){
+ 
+ $('#comment_form').on('submit', function(event){
+  event.preventDefault();
+  if($('#cust').val() != '' && $('#time').val() != '' && $('#comment').val() != '')
+  {
+   var form_data = $(this).serialize();
+   $.ajax({
+    url:"prepareinsert.php",
+    method:"POST",
+    data:form_data,
+    success:function(data)
+    {
+     $('#comment_form')[0].reset();
+     load_unseen_notification();
+    }
+   });
+  }
+  else
+  {
+   alert("Please fill in the form");
+  }
+ });
+ 
+});
+</script>
+
 
   <body>
 
@@ -68,7 +73,7 @@
             <li class="active"><a href="prepare.php">Prepare Me</a></li>
             <li><a href="direction.php">Direction</a></li>
 			      <li><a href="contact.php">Contact Us</a></li>
-            <li><a href="addmenu.php">Admin</a></li>
+            <li><a href="admin.php">Admin</a></li>
             <li><a href="logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -78,47 +83,32 @@
     <div class="container">
 		
         <div class="starter-template">
-          <h1>HiFood Prepare</h1>
-          <p class="lead">Let HiFood help you to let the restaurant know you are on the way</p>
+          <h1>Prepare Me</h1>
+          <p class="lead">Please give us your customer number and time for us to prepare your foods</p>
         </div>
 		
 
+   <center>
 
-  <center>
-  <body>
-        <table>
-         <tr>
-           <th>Customer</th> 
-           <th>Food Item</th> 
-           <th>Price</th>
-         </tr>
-
-  <?php
-
-  $conn = mysqli_connect("173.194.109.118", "turbo", "turbo", "database");
-  // Check connection
-  if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
-  } 
-  $sql = "SELECT order_id, cust_id, item_name, price FROM order_menu";
-  $result = $conn->query($sql);
-  if ($result->num_rows > 0) {
-   // output data of each row
-   while($row = $result->fetch_assoc()) {
-   echo "<tr> 
-         <td>" . $row["cust_id"]. "</td>
-         <td>" . $row["item_name"]. "</td>
-         <td>" . $row["price"]. "</td></tr>";
-   }
-   echo "</table>";
-   } else { echo "0 results"; }
-   $conn->close();
-   ?>
-   </table>
+      <form method="post" id="comment_form">
+    <div class="form-group">
+     <label>Customer order</label>
+     <input type="text" name="cust" id="cust" class="form-control" placeholder="your order number CUST_XXX">
+    </div>
+    <div class="form-group">
+     <label>Food Expect time</label>
+     <input type="time" name="time" id="time" class="form-control" placeholder="xx:xx">
+    </div>
+    <div class="form-group">
+     <label>Additional Message</label>
+     <textarea name="comment" id="comment" class="form-control" rows="5" placeholder="Add additional message, special require or food alergy in your order"></textarea>
+    </div>
+    <div class="form-group">
+     <input type="submit" name="post" id="post" class="btn btn-warning" value="PREPARE" />
+    </div>
+   </form>
 
    </center>
-
-
   	   
 	
   <!--footer-->

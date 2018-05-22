@@ -12,6 +12,31 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
+
+    <style>
+          body {
+          padding-top: 0px;}
+          .starter-template {
+          padding: 40px 15px;
+          text-align: center;}
+          table {
+          border-collapse: collapse;
+          width: 75%;
+          color: #588c7e;
+          font-family: monospace;
+          font-size: 15px;
+          text-align: left;
+          } 
+          th {
+          background-color: #588c7e;
+          color: white;
+          }
+          tr:nth-child(even) {background-color: #f2f2f2}
+
+
+    </style>
+
+  
 </head>
 
 
@@ -34,7 +59,7 @@
       <li><a href="prepare.php">Prepare Me</a></li>
       <li><a href="direction.php">Direction</a></li>
       <li><a href="contact.php">Contact Us</a></li>
-      <li><a href="addmenu.php">Admin</a></li>
+      <li><a href="admin.php">Admin</a></li>
       <li><a href="logout.php">Logout</a></li>
     </ul>
   </div>
@@ -159,7 +184,7 @@
                         </div>
                     </div>
              
-                    <a href="javascript:alert('Your Order has been Placed Successfully');" class="btn btn-success">CHECKOUT</a>
+                    <a href="javascript:alert('Order Successfully');" class="btn btn-success">CHECKOUT</a>
                 
                     
               </div>
@@ -167,6 +192,41 @@
       </div>
     <div class="clearfix" style="margin-bottom:30px;"></div>
     </div>
+
+
+<center>
+  <body>
+        <table>
+         <tr>
+           <th>Customer</th> 
+           <th>Food Item</th> 
+           <th>Price</th>
+         </tr>
+
+  <?php
+
+  $conn = mysqli_connect("173.194.109.118", "turbo", "turbo", "database");
+  // Check connection
+  if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+  } 
+  $sql = "SELECT order_id, cust_id, item_name, price FROM order_menu";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+   echo "<tr> 
+         <td>" . $row["cust_id"]. "</td>
+         <td>" . $row["item_name"]. "</td>
+         <td>" . $row["price"]. "</td></tr>";
+   }
+   echo "</table>";
+   } else { echo "0 results"; }
+   $conn->close();
+   ?>
+   </table>
+
+   </center>
 
 
   <!--footer-->
